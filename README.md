@@ -1,4 +1,6 @@
-# ocean-sentinel
+# coastal-sentinel
+
+Repo : https://github.com/ronan-develop/coastal-sentinel
 
 API prédictive de risque climatique et sanitaire pour la conchyliculture — alerte précoce (J+3 à J+7) basée sur des données environnementales publiques, en complément du diagnostic scientifique assuré par l'Ifremer.
 
@@ -18,7 +20,7 @@ Chaque alerte est associée à une action recommandée (refroidissement, sortie 
 
 Plan détaillé, sources de données, contacts (CRC Bretagne Nord, Ifremer/LEMAR), étapes de développement et pistes de financement :
 
-📄 [projet-api-risque.md](./projet-api-risque.md)
+📄 [projet-api-risque-ostreicole.md](./projet-api-risque-ostreicole.md)
 
 ## Prochaine étape
 

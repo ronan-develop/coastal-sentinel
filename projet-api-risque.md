@@ -1,5 +1,6 @@
 # Projet — API prédictive de risque climatique/sanitaire pour la conchyliculture
 
+**Repo** : https://github.com/ronan-develop/coastal-sentinel
 **Statut** : Phase 0 — validation terrain
 **Localisation** : Guilers (29), zone CRC Bretagne Nord
 
@@ -114,7 +115,29 @@ Modèle probable : accès mutualisé via CRC, ou abonnement producteur direct se
 
 ---
 
-## 7. Potentiel d'extension (à ne pas travailler maintenant)
+## 7. État de l'art — ce qui existe déjà
+
+Recherche menée pour vérifier l'absence de concurrence directe et identifier les bases scientifiques/techniques mobilisables.
+
+### Aucun système d'alerte précoce spécifique conchyliculture identifié
+Ni en France, ni en Europe, à ce jour.
+
+### Systèmes comparables sur d'autres organismes/secteurs (structure transposable)
+- **Alerte précoce poissons de rivière (Suisse)** — un outil génère des prédictions de chaleur pour les poissons de rivière, permettant une gestion proactive des cours d'eau face aux vagues de chaleur. Même logique (seuil thermique + prévision), organisme différent (poisson d'eau douce).
+- **forecaster.health** (projets européens EARLY-ADAPT, HHS-EWS, FORECAST-AIR) — plateforme paneuropéenne en libre accès qui prédit les risques de mortalité liés aux températures ambiantes pour la santé humaine, jusqu'à deux semaines à l'avance, avec alertes codées par niveau de risque pour 580 régions dans 31 pays. Structure directement inspirante : seuils + fenêtre de prévision + alerte géolocalisée par niveau de risque.
+
+### Base scientifique déjà quantifiée par Ifremer — exploitable comme seuil de départ
+Sur la malaïgue (étang de Thau) : les chercheurs d'Ifremer ont établi qu'une hausse de la température estivale de l'air d'1°C multiplie le risque de malaïgue par 3. Corrélation déjà publiée, mais jamais transformée en outil d'alerte opérationnel diffusé aux producteurs — c'est exactement le vide à combler.
+
+### Sources de données de prévision (J+3 à J+10) déjà disponibles
+- **Copernicus Marine Service** — système Mercator global, 10 jours de prévisions océaniques 3D (température, salinité, courants), mis à jour quotidiennement. Accès API/CLI via Copernicus Marine Toolbox. Résolution mondiale, déclinaisons régionales existent pour la zone Iberia-Biscay-Irish Seas (couvre la Bretagne).
+- **Shom** — prévisions océanographiques côtières françaises (température, salinité, courants, niveaux d'eau), avec océanogrammes sur 4 jours de résolution fine par point. Basé sur Copernicus mais raffinement local. À croiser avec Copernicus pour la meilleure précision sur la rade de Brest.
+
+**Action de vérification technique à mener** : créer un compte Copernicus Marine (gratuit) et tester une requête sur la zone rade de Brest pour valider la résolution réelle des données avant l'échange CRC.
+
+---
+
+## 8. Potentiel d'extension (à ne pas travailler maintenant)
 
 Le modèle (données publiques + seuils calibrés par un partenaire scientifique + fenêtre d'alerte actionnable) est réplicable à d'autres filières, une fois validé sur l'ostréiculture :
 
@@ -129,7 +152,7 @@ Le modèle (données publiques + seuils calibrés par un partenaire scientifique
 
 ---
 
-## 8. Ce qu'il ne faut pas faire
+## 9. Ce qu'il ne faut pas faire
 
 - Ne pas arriver au CRC avec une solution déjà figée
 - Ne pas prétendre remplacer ou concurrencer Ifremer/REPAMO

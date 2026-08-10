@@ -18,7 +18,7 @@ Chaque alerte est associée à une action recommandée (refroidissement, sortie 
 
 Plan détaillé, sources de données, contacts (CRC Bretagne Nord, Ifremer/LEMAR), étapes de développement et pistes de financement :
 
-📄 [projet-api-risque.md](./projet-api-risque-ostreicole.md)
+📄 [projet-api-risque.md](./projet-api-risque.md)
 
 ## Prochaine étape
 

@@ -2,6 +2,7 @@
 /.claude/settings.local.json
 docs/email-crc-bretagne-nord.md
 docs/modele-economique.md
+avancements.md
 .secrets
 
 ###> symfony/framework-bundle ###

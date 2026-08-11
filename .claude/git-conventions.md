@@ -6,21 +6,21 @@
 <emoji> <type>(<scope>): <sujet>
 ```
 
-| Emoji | Type       | Quand                                        |
-|-------|------------|----------------------------------------------|
-| ✨    | feat       | Nouvelle fonctionnalité                      |
-| 🔧    | fix        | Correction de bug                            |
-| 📖    | docs       | Documentation uniquement                     |
-| ♻️    | refactor   | Refactorisation sans nouvelle feature ni fix |
-| ⚡    | perf       | Amélioration des performances                |
-| ✅    | test       | Ajout/correction de tests                    |
-| 🏗️    | build      | Système de build, dépendances                |
-| 🏭    | ci         | Configuration CI, scripts de déploiement     |
-| 🛠️    | chore      | Outillage, config, nettoyage                 |
-| 🎨    | style      | Formatage, espaces (pas de logique)          |
-| 🔒    | security   | Correctifs de sécurité                       |
-| ⏪    | revert     | Annulation d'un commit                       |
-| 🚧    | WIP        | Travail en cours (éviter sur main)           |
+| Emoji | Type     | Quand                                        |
+| ----- | -------- | -------------------------------------------- |
+| ✨    | feat     | Nouvelle fonctionnalité                      |
+| 🔧    | fix      | Correction de bug                            |
+| 📖    | docs     | Documentation uniquement                     |
+| ♻️    | refactor | Refactorisation sans nouvelle feature ni fix |
+| ⚡    | perf     | Amélioration des performances                |
+| ✅    | test     | Ajout/correction de tests                    |
+| 🏗️    | build    | Système de build, dépendances                |
+| 🏭    | ci       | Configuration CI, scripts de déploiement     |
+| 🛠️    | chore    | Outillage, config, nettoyage                 |
+| 🎨    | style    | Formatage, espaces (pas de logique)          |
+| 🔒    | security | Correctifs de sécurité                       |
+| ⏪    | revert   | Annulation d'un commit                       |
+| 🚧    | WIP      | Travail en cours (éviter sur main)           |
 
 **Règles non négociables :**
 
@@ -65,7 +65,4 @@ Le user décide de l'ouverture des PRs et des merges.
 
 ## Slash command `/git`
 
-Tape `/git` dans le chat pour déclencher le workflow guidé (analyse `git status`
-+ `git diff`, regroupement par responsabilité, messages au bon format, contrôle
-d'absence de secrets, validation avant chaque commit). Définie dans
-[.claude/commands/git.md](commands/git.md).
+Tape `/git` dans le chat pour déclencher le workflow guidé : analyse de `git status` et `git diff`, regroupement par responsabilité, messages au bon format, contrôle d'absence de secrets, et validation avant chaque commit. Définie dans [.claude/commands/git.md](commands/git.md).

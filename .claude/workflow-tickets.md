@@ -35,11 +35,11 @@ gh issue create \
   --body "<contexte + critères d'acceptation>"
 ```
 
-| Label     | Usage                                              |
-|-----------|----------------------------------------------------|
-| `feature` | Nouvelle fonctionnalité                            |
-| `bug`     | Correction d'un comportement défectueux            |
-| `chore`   | Outillage, config, dette technique, documentation  |
+| Label     | Usage                                             |
+| --------- | ------------------------------------------------- |
+| `feature` | Nouvelle fonctionnalité                           |
+| `bug`     | Correction d'un comportement défectueux           |
+| `chore`   | Outillage, config, dette technique, documentation |
 
 Le corps du ticket décrit **le quoi et le pourquoi** + les **critères
 d'acceptation** (ce qui permettra de dire « c'est fini »).

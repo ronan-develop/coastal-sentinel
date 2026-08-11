@@ -1,3 +1,5 @@
+# `/git` — commits assistés
+
 Prépare et effectue un ou plusieurs commits selon la convention du projet définie dans `.claude/git-conventions.md`.
 
 ## Étapes obligatoires
@@ -9,9 +11,11 @@ Prépare et effectue un ou plusieurs commits selon la convention du projet défi
 3. **Regroupe les fichiers par responsabilité logique** — ne jamais faire `git add .` en un bloc. Chaque commit doit représenter une seule responsabilité.
 
 4. **Pour chaque groupe**, propose un commit au format :
-   ```
+
+   ```text
    <emoji> <type>(<scope>): <sujet>
    ```
+
    - Emoji TOUJOURS présent (voir tableau ci-dessous)
    - Scope = nom de la classe, du module ou du composant (jamais `feat(api)` générique)
    - Sujet court, à l'impératif, en français
@@ -21,7 +25,7 @@ Prépare et effectue un ou plusieurs commits selon la convention du projet défi
 ## Tableau des types
 
 | Emoji | Type     | Quand                                        |
-|-------|----------|----------------------------------------------|
+| ----- | -------- | -------------------------------------------- |
 | ✨    | feat     | Nouvelle fonctionnalité                      |
 | 🔧    | fix      | Correction de bug                            |
 | 📖    | docs     | Documentation uniquement                     |

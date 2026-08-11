@@ -10,13 +10,13 @@ précoce (J+3 à J+7) à partir de données environnementales publiques.
 ## Index
 
 | Sujet                        | Fichier                                                    |
-|------------------------------|------------------------------------------------------------|
+| ---------------------------- | ---------------------------------------------------------- |
 | Tickets, planification, `gh` | [.claude/workflow-tickets.md](.claude/workflow-tickets.md) |
-| Architecture `src/`, UUID    | [.claude/architecture.md](.claude/architecture.md)         |
 | Commits, branches, `/git`    | [.claude/git-conventions.md](.claude/git-conventions.md)   |
-| Commandes bin/console, tests | [.claude/commands.md](.claude/commands.md)                 |
-| Méthodologie TDD             | [.claude/tdd.md](.claude/tdd.md)                           |
-| Modèle de risque, ingestion  | [.claude/domaine.md](.claude/domaine.md)                   |
+| Architecture `src/`, UUID    | `.claude/architecture.md` _(à venir)_                      |
+| Commandes bin/console, tests | `.claude/commands.md` _(à venir)_                          |
+| Méthodologie TDD             | `.claude/tdd.md` _(à venir)_                               |
+| Modèle de risque, ingestion  | `.claude/domaine.md` _(à venir)_                           |
 
 ---
 
@@ -69,7 +69,7 @@ Ne jamais utiliser `#[ORM\GeneratedValue]` ni `private ?Uuid $id = null;`.
 ## Entités Doctrine
 
 | Entité               | Rôle                                                                    |
-|----------------------|-------------------------------------------------------------------------|
+| -------------------- | ----------------------------------------------------------------------- |
 | `Zone`               | Bassin conchylicole — géométrie PostGIS, code, nom                      |
 | `EnvironmentReading` | Mesure environnementale ingérée (temp. eau, salinité, O₂, source, date) |
 | `RiskAssessment`     | Évaluation de risque calculée (type, score, action, fenêtre J+3→J+7)    |
@@ -80,10 +80,10 @@ Stack : Symfony 7 / API Platform 4, PHP 8.2+, **PostgreSQL + PostGIS**, JWT (lex
 ### Trois types de risque
 
 | Type        | Déclencheur                                                    |
-|-------------|----------------------------------------------------------------|
+| ----------- | -------------------------------------------------------------- |
 | `thermal`   | Température > seuil (~28 °C) + durée d'exposition              |
 | `hypoxia`   | Température + absence de brassage + météo stable prolongée     |
-| `bacterial` | Température + salinité + pluie récente (*Vibrio aestuarianus*) |
+| `bacterial` | Température + salinité + pluie récente (_Vibrio aestuarianus_) |
 
 Chaque risque détecté → recommandation d'action associée.
 

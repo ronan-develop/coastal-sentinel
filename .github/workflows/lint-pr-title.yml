@@ -1,0 +1,21 @@
+name: Lint PR title
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  lint-pr-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vérifier le format du titre de la PR
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          types="feat|fix|docs|refactor|perf|test|build|ci|chore|style|security|revert|WIP"
+          if ! echo "$TITLE" | grep -qP "^\S+ ($types)(\([^)]+\))?: .+"; then
+            echo "::error::Titre de PR invalide : \"$TITLE\""
+            echo "::error::Format attendu : <emoji> <type>(<scope>): <sujet> — scope optionnel pour les PR. Voir .claude/git-conventions.md"
+            exit 1
+          fi
+          echo "✅ Titre de PR valide."

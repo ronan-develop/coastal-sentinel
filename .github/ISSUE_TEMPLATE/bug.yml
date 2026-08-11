@@ -1,35 +1,43 @@
-name: "🔧 Bug"
-description: Correction d'un comportement défectueux
+name: Bug
+description: Comportement incorrect ou inattendu
 labels: ["bug"]
 body:
   - type: textarea
-    id: comportement-actuel
+    id: description
     attributes:
-      label: Comportement actuel
-      description: Que se passe-t-il ?
+      label: Description
+      description: Que se passe-t-il ? Sois précis.
     validations:
       required: true
-  - type: textarea
-    id: comportement-attendu
-    attributes:
-      label: Comportement attendu
-      description: Que devrait-il se passer ?
-    validations:
-      required: true
+
   - type: textarea
     id: reproduction
     attributes:
-      label: Étapes de reproduction
+      label: Étapes pour reproduire
       placeholder: |
-        1. ...
-        2. ...
+        1. Appeler `GET /...`
+        2. Avec les paramètres...
+        3. Observer la réponse...
     validations:
-      required: false
+      required: true
+
   - type: textarea
-    id: criteres
+    id: expected
     attributes:
-      label: Critères d'acceptation
-      placeholder: |
-        - [ ] ...
+      label: Comportement attendu
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Zone concernée
+      options:
+        - Ingestion (adaptateurs, cron, sources de données)
+        - Moteur de risque (RiskEngine, seuils)
+        - API (endpoints, ApiResource)
+        - Doctrine / Entités (Zone, EnvironmentReading, RiskAssessment, DataSource)
+        - Documentation
+        - Autre
     validations:
       required: true

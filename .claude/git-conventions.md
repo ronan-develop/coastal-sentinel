@@ -76,6 +76,26 @@ remote. Ne pas laisser traîner de branches déjà mergées.
 
 Le user décide de l'ouverture des PRs et des merges.
 
+## Vérifications automatiques
+
+| Contrôle                                     | Où                                              | Portée                           |
+| -------------------------------------------- | ----------------------------------------------- | -------------------------------- |
+| Format du message de commit                  | `.githooks/commit-msg` (local)                  | Chaque commit local              |
+| Interdiction de commit direct sur `main`     | `.githooks/pre-commit` (local)                  | Chaque commit local              |
+| Interdiction de push direct sur `main`       | `.githooks/pre-push` (local)                    | Chaque push local                |
+| Format du titre de PR                        | `.github/workflows/lint-pr-title.yml` (GitHub)  | Ouverture/édition de PR          |
+| Interdiction de push/merge direct sur `main` | Protection de branche GitHub (`enforce_admins`) | Toute tentative, y compris admin |
+
+**Activation des hooks locaux** (une fois par clone) :
+
+```bash
+git config core.hooksPath .githooks
+```
+
+Les hooks locaux ne voient que les commandes `git` exécutées en local — ils ne
+peuvent pas intercepter `gh pr create`/`gh pr merge`, qui parlent directement à
+l'API GitHub. D'où le lint de titre de PR côté GitHub Actions, complémentaire.
+
 ## Slash command `/git`
 
 Tape `/git` dans le chat pour déclencher le workflow guidé : analyse de `git status` et `git diff`, regroupement par responsabilité, messages au bon format, contrôle d'absence de secrets, et validation avant chaque commit. Définie dans [.claude/commands/git.md](commands/git.md).

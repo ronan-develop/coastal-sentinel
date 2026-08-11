@@ -14,7 +14,7 @@ précoce (J+3 à J+7) à partir de données environnementales publiques.
 | Tickets, planification, `gh` | [.claude/workflow-tickets.md](.claude/workflow-tickets.md) |
 | Commits, branches, `/git`    | [.claude/git-conventions.md](.claude/git-conventions.md)   |
 | Architecture `src/`, UUID    | [.claude/architecture.md](.claude/architecture.md)         |
-| Commandes bin/console, tests | `.claude/commands.md` _(à venir)_                          |
+| Commandes bin/console, tests | [.claude/commands.md](.claude/commands.md)                 |
 | Méthodologie TDD             | `.claude/tdd.md` _(à venir)_                               |
 | Modèle de risque, ingestion  | `.claude/domaine.md` _(à venir)_                           |
 

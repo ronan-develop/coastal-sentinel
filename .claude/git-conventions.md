@@ -29,6 +29,7 @@
 - Commits **atomiques** — jamais `git add .` en un bloc
 - Jamais de commit direct sur `main`
 - Pas de `Co-Authored-By: Claude`
+- **Jamais de squash merge** — toujours un merge commit classique (`gh pr merge --merge`), pour garder la trace complète de chaque commit atomique
 
 ## Workflow type
 
@@ -52,6 +53,9 @@ git commit -m "✨ feat(NomClasse): description courte"
 git checkout -b feat/#42-nom-explicite
 gh pr create --title "✨ feat(NomClasse): description courte" \
   --body "Closes #42" --label "feature"
+
+# au merge, toujours en merge commit — jamais --squash ni --rebase
+gh pr merge --merge
 ```
 
 ## Limites autonomie — confirmation obligatoire avant de

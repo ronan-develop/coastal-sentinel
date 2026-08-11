@@ -75,3 +75,23 @@ extrait une seule fois car un deuxième besoin réel (au-delà de Copernicus)
 est déjà prévisible (Météo-France, même logique de zone). Ce n'est **pas**
 extrait "au cas où" : c'est extrait parce que la même donnée
 (géométrie → bbox) sert déjà à un besoin identifié.
+
+---
+
+## Même exigence côté Python
+
+Les principes ci-dessus ne s'arrêtent pas à la frontière PHP/Python — le
+script `bin/ingest-copernicus.py` suit la même discipline SRP, avec les
+outils idiomatiques Python (`dataclass`, pas de hiérarchie de classes
+inutile) :
+
+| Composant                           | Seule responsabilité                                            |
+| ----------------------------------- | --------------------------------------------------------------- |
+| `IngestionRequest` (dataclass)      | Porter la zone + la fenêtre temporelle demandées                |
+| `CopernicusDailyTemperatureFetcher` | Interroger Copernicus Marine et produire la moyenne journalière |
+| `main()`                            | Parser les arguments, orchestrer, gérer l'échec, écrire le JSON |
+
+Même garde-fou qu'en PHP : pas de classe pour parser les arguments (une
+fonction `parse_args()` suffit — `argparse` fait déjà le travail), pas de
+hiérarchie d'exceptions custom pour un script qui a un seul point d'échec
+possible (le `try/except` générique dans `main()` suffit).

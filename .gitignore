@@ -23,3 +23,7 @@ avancements.md
 /phpunit.xml
 /.phpunit.cache/
 ###< phpunit/phpunit ###
+
+###> app/copernicus ###
+/.venv/
+###< app/copernicus ###

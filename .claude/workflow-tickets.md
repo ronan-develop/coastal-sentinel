@@ -91,9 +91,20 @@ Format et découpage : [git-conventions.md](git-conventions.md).
 ```bash
 gh pr create --base main --title "<emoji> <type>(<scope>): <sujet>" \
   --body "Closes #<numéro>" --label "<même label que le ticket>"
+
+# systématique, toujours juste après : milestone identique au ticket fermé
+gh pr edit <numéro-pr> --milestone "<même milestone que le ticket>"
 ```
 
 `Closes #<numéro>` ferme automatiquement le ticket au merge.
+
+**Non négociable** : la milestone de la PR doit toujours refléter celle du
+ticket qu'elle ferme. L'assignation au Kanban et l'assignee (`ronan-develop`)
+sont automatiques via `.github/workflows/add-to-project.yml` (déclenché à
+l'ouverture, issue ou PR) — mais la milestone d'une PR ne peut pas être
+déduite automatiquement du ticket lié sans logique supplémentaire ; c'est
+donc une étape manuelle **systématique**, jamais oubliée, exécutée juste
+après chaque `gh pr create`.
 
 ---
 

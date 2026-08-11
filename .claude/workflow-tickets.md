@@ -106,6 +106,15 @@ déduite automatiquement du ticket lié sans logique supplémentaire ; c'est
 donc une étape manuelle **systématique**, jamais oubliée, exécutée juste
 après chaque `gh pr create`.
 
+## 7. Après le merge — journal non technique
+
+Une fois la PR mergée, évaluer si l'étape franchie apporte une plus-value
+suffisante pour un lecteur non développeur (CRC, partenaires) — typiquement :
+nouvelle brique fonctionnelle, décision structurante, jalon terrain. Si oui,
+compléter `avancements.md` (racine du repo, non commité, non tracké) avec
+une nouvelle entrée de journal datée. Ne pas y consigner du pur outillage
+interne (config CI, lint, etc.) sans intérêt pour ce public.
+
 ---
 
 ## Limites autonomie — confirmation obligatoire avant de

@@ -40,6 +40,20 @@ Rattachement **automatique** à la création via
 [.github/workflows/add-to-project.yml](../.github/workflows/add-to-project.yml)
 — aucune commande manuelle nécessaire.
 
+### Colonnes du Kanban ↔ étapes du flux
+
+| Colonne       | Correspond à                                                   |
+| ------------- | -------------------------------------------------------------- |
+| `Backlog`     | Ticket créé, pas encore de plan validé                         |
+| `Ready`       | Plan validé, prêt à démarrer (branche pas encore créée)        |
+| `In progress` | Branche créée, développement en TDD en cours                   |
+| `In review`   | PR ouverte, en attente de merge                                |
+| `Done`        | PR mergée (le ticket se ferme automatiquement via `Closes #n`) |
+
+Déplacer manuellement la carte à chaque changement d'étape (pas d'automatisation
+au-delà de la création → `Backlog` et de la fermeture → `Done`, gérées par
+GitHub par défaut).
+
 | Label     | Usage                                             |
 | --------- | ------------------------------------------------- |
 | `feature` | Nouvelle fonctionnalité                           |

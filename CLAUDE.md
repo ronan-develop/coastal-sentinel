@@ -13,7 +13,7 @@ précoce (J+3 à J+7) à partir de données environnementales publiques.
 | ---------------------------- | ---------------------------------------------------------- |
 | Tickets, planification, `gh` | [.claude/workflow-tickets.md](.claude/workflow-tickets.md) |
 | Commits, branches, `/git`    | [.claude/git-conventions.md](.claude/git-conventions.md)   |
-| Architecture `src/`, UUID    | `.claude/architecture.md` _(à venir)_                      |
+| Architecture `src/`, UUID    | [.claude/architecture.md](.claude/architecture.md)         |
 | Commandes bin/console, tests | `.claude/commands.md` _(à venir)_                          |
 | Méthodologie TDD             | `.claude/tdd.md` _(à venir)_                               |
 | Modèle de risque, ingestion  | `.claude/domaine.md` _(à venir)_                           |
@@ -70,12 +70,13 @@ Ne jamais utiliser `#[ORM\GeneratedValue]` ni `private ?Uuid $id = null;`.
 
 | Entité               | Rôle                                                                    |
 | -------------------- | ----------------------------------------------------------------------- |
-| `Zone`               | Bassin conchylicole — géométrie PostGIS, code, nom                      |
+| `Zone`               | Bassin conchylicole — géométrie (support spatial MariaDB), code, nom    |
 | `EnvironmentReading` | Mesure environnementale ingérée (temp. eau, salinité, O₂, source, date) |
 | `RiskAssessment`     | Évaluation de risque calculée (type, score, action, fenêtre J+3→J+7)    |
+| `RiskThreshold`      | Seuil de déclenchement d'un risque (ex. 28 °C thermique)                |
 | `DataSource`         | Fournisseur de données (Copernicus, Shom, Météo-France)                 |
 
-Stack : Symfony 7 / API Platform 4, PHP 8.2+, **PostgreSQL + PostGIS**, JWT (lexik).
+Stack : Symfony 7 / API Platform 4, PHP 8.2+, **MariaDB** (support spatial natif), JWT (lexik).
 
 ### Trois types de risque
 

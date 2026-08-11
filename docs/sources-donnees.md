@@ -137,7 +137,7 @@ phytoplancton, microbiologie, contaminants.
 
 ### data.gouv.fr — zones conchylicoles
 
-- **[Zones de production ou de parcage conchylicole — France entière](https://www.data.gouv.fr/en/datasets/zones-de-production-ou-de-parcage-conchylicole-france-entiere/)** — polygones géospatiaux → **alimente directement la géométrie PostGIS de l'entité `Zone`**.
+- **[Zones de production ou de parcage conchylicole — France entière](https://www.data.gouv.fr/en/datasets/zones-de-production-ou-de-parcage-conchylicole-france-entiere/)** — polygones géospatiaux → **alimente directement la géométrie (support spatial MariaDB) de l'entité `Zone`**.
 - **Classement sanitaire de salubrité** (par département, ex. Finistère groupe 3) — arrêtés préfectoraux, 3 groupes (G1 gastéropodes/échinodermes, G2 fouisseurs, G3 non-fouisseurs = huîtres/moules).
 - **Licence** : Licence Ouverte Etalab.
 

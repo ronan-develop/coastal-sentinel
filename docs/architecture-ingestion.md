@@ -74,10 +74,9 @@ J+1, source externe en panne : l'API répond toujours, avec la donnée de la vei
         │                   └──────────────┘        └────────────────────┘    │     │
         └──────────────────────────────────────────────────────────────────── │ ────┘
                                                                                ▼
-                                                                        ┌────────────┐
-                                                                        │ PostgreSQL │
-                                                                        │  + PostGIS │
-                                                                        └────────────┘
+                                                                        ┌──────────┐
+                                                                        │ MariaDB  │
+                                                                        └──────────┘
                                                                                ▲
         ┌──────────────────────── EN LIGNE (requête client) ─────────────────── │ ────┐
         │                                                                        │     │
@@ -88,7 +87,7 @@ J+1, source externe en panne : l'API répond toujours, avec la donnée de la vei
 ```
 
 Le trait vertical = la base. Le haut (hors-ligne) **écrit**, le bas (en ligne)
-**lit**. Les deux mondes ne se croisent **que** via PostgreSQL.
+**lit**. Les deux mondes ne se croisent **que** via MariaDB.
 
 ---
 
@@ -102,7 +101,7 @@ Le trait vertical = la base. Le haut (hors-ligne) **écrit**, le bas (en ligne)
 3. **Les alertes sont reproductibles** : la donnée ingérée est persistée, donc
    on peut rejouer/auditer une alerte passée (indispensable au test pilote —
    comparer alertes émises vs mortalités observées).
-4. **Portable** : « cron → script → PostgreSQL » tourne à l'identique sur
+4. **Portable** : « cron → script → MariaDB » tourne à l'identique sur
    o2switch (Python 2.7→3.13 + cron disponibles), un VPS, un conteneur ou une CI
    planifiée. Aucun verrou d'hébergement.
 

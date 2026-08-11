@@ -56,14 +56,23 @@ gh pr create --title "✨ feat(NomClasse): description courte" \
 
 # au merge, toujours en merge commit — jamais --squash ni --rebase
 gh pr merge --merge
+
+# nettoyage post-merge : supprimer la branche, local + remote
+git branch -d feat/#42-nom-explicite
+git push origin --delete feat/#42-nom-explicite
 ```
+
+## Nettoyage post-merge
+
+Une fois une PR mergée, **supprimer la branche** — en local **et** sur le
+remote. Ne pas laisser traîner de branches déjà mergées.
 
 ## Limites autonomie — confirmation obligatoire avant de
 
 - Pusher (`git push`)
 - Merger dans `main`
 - Ouvrir / fermer une PR
-- Supprimer une branche ou des fichiers non triviaux
+- Supprimer une branche ou des fichiers non triviaux (y compris le nettoyage post-merge ci-dessus)
 
 Le user décide de l'ouverture des PRs et des merges.
 

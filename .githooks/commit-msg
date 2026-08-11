@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+commit_msg_file="$1"
+first_line=$(head -n1 "$commit_msg_file")
+
+# Ignorer les commits de merge (générés par git merge / gh pr merge)
+if echo "$first_line" | grep -qE '^Merge '; then
+  exit 0
+fi
+
+types="feat|fix|docs|refactor|perf|test|build|ci|chore|style|security|revert|WIP"
+
+if ! echo "$first_line" | grep -qP "^\S+ ($types)\([^)]+\): .+"; then
+  echo "🚫 Message de commit invalide." >&2
+  echo "   Format attendu : <emoji> <type>(<scope>): <sujet>" >&2
+  echo "   Types valides  : feat, fix, docs, refactor, perf, test, build, ci, chore, style, security, revert, WIP" >&2
+  echo "   Voir .claude/git-conventions.md" >&2
+  exit 1
+fi

@@ -91,7 +91,7 @@ Tester l'accès réel à Copernicus Marine sur la rade de Brest, extraire les se
 ### Étape 4 — Construire un MVP minimal
 
 Un seul bassin (rade de Brest), un seul type de risque pour commencer (thermique, le plus documenté).
-Stack : PHP 8.2+ (dernière version recommandée) / Symfony 7 + API Platform + PostgreSQL/PostGIS, cron d'ingestion quotidien.
+Stack : PHP 8.2+ (dernière version recommandée) / Symfony 7 + API Platform + MariaDB (support spatial natif), cron d'ingestion quotidien.
 Endpoint type : `GET /risque/{zone_bassin}` → score + type de risque + action recommandée + fenêtre temporelle.
 
 ### Étape 5 — Retour au CRC avec le MVP

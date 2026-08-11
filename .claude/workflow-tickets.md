@@ -35,6 +35,11 @@ gh issue create \
   --body "<contexte + critères d'acceptation>"
 ```
 
+Kanban de suivi : [github.com/users/ronan-develop/projects/9](https://github.com/users/ronan-develop/projects/9/views/1).
+Rattachement **automatique** à la création via
+[.github/workflows/add-to-project.yml](../.github/workflows/add-to-project.yml)
+— aucune commande manuelle nécessaire.
+
 | Label     | Usage                                             |
 | --------- | ------------------------------------------------- |
 | `feature` | Nouvelle fonctionnalité                           |

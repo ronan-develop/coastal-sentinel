@@ -26,4 +26,5 @@ avancements.md
 
 ###> app/copernicus ###
 /.venv/
+/bin/__pycache__/
 ###< app/copernicus ###

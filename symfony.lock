@@ -13,6 +13,9 @@
             "src/ApiResource/.gitignore"
         ]
     },
+    "dama/doctrine-test-bundle": {
+        "version": "v8.6.0"
+    },
     "doctrine/deprecations": {
         "version": "1.1",
         "recipe": {
@@ -34,6 +37,18 @@
             "config/packages/doctrine.yaml",
             "src/Entity/.gitignore",
             "src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "1f5514cfa15b947298df4d771e694e578d4c204d"
+        },
+        "files": [
+            "src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -120,6 +135,15 @@
             "src/Kernel.php",
             ".editorconfig"
         ]
+    },
+    "symfony/maker-bundle": {
+        "version": "1.67",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
+        }
     },
     "symfony/property-info": {
         "version": "7.4",

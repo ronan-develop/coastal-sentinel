@@ -1,0 +1,35 @@
+name: "🔧 Bug"
+description: Correction d'un comportement défectueux
+labels: ["bug"]
+body:
+  - type: textarea
+    id: comportement-actuel
+    attributes:
+      label: Comportement actuel
+      description: Que se passe-t-il ?
+    validations:
+      required: true
+  - type: textarea
+    id: comportement-attendu
+    attributes:
+      label: Comportement attendu
+      description: Que devrait-il se passer ?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Étapes de reproduction
+      placeholder: |
+        1. ...
+        2. ...
+    validations:
+      required: false
+  - type: textarea
+    id: criteres
+    attributes:
+      label: Critères d'acceptation
+      placeholder: |
+        - [ ] ...
+    validations:
+      required: true

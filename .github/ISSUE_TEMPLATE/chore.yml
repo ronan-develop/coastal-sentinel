@@ -1,19 +1,31 @@
-name: "🛠️ Chore"
-description: Outillage, config, dette technique, documentation
+name: Chore / Refactoring
+description: Nettoyage, refactorisation, mise à jour de dépendances, outillage
 labels: ["chore"]
 body:
   - type: textarea
-    id: quoi-pourquoi
+    id: description
     attributes:
-      label: Quoi et pourquoi
-      description: Que faut-il faire, et pourquoi maintenant ?
+      label: Description
+      description: Qu'est-ce qui doit être fait et pourquoi ?
     validations:
       required: true
+
   - type: textarea
-    id: criteres
+    id: scope
     attributes:
-      label: Critères d'acceptation
-      placeholder: |
-        - [ ] ...
+      label: Périmètre
+      description: Fichiers ou modules concernés
     validations:
       required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Refactoring
+        - Mise à jour de dépendance
+        - Nettoyage de code mort
+        - Documentation
+        - CI/CD
+        - Outillage

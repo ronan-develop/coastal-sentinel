@@ -1,0 +1,28 @@
+name: "✨ Feature"
+description: Nouvelle fonctionnalité
+labels: ["feature"]
+body:
+  - type: textarea
+    id: quoi-pourquoi
+    attributes:
+      label: Quoi et pourquoi
+      description: Que doit faire cette fonctionnalité, et pourquoi est-elle nécessaire ?
+    validations:
+      required: true
+  - type: textarea
+    id: criteres
+    attributes:
+      label: Critères d'acceptation
+      description: Ce qui permettra de dire « c'est fini ».
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: contexte
+    attributes:
+      label: Contexte additionnel
+      description: Liens, captures, incertitudes connues.
+    validations:
+      required: false

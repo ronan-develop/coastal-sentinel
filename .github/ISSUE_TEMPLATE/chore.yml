@@ -1,0 +1,19 @@
+name: "🛠️ Chore"
+description: Outillage, config, dette technique, documentation
+labels: ["chore"]
+body:
+  - type: textarea
+    id: quoi-pourquoi
+    attributes:
+      label: Quoi et pourquoi
+      description: Que faut-il faire, et pourquoi maintenant ?
+    validations:
+      required: true
+  - type: textarea
+    id: criteres
+    attributes:
+      label: Critères d'acceptation
+      placeholder: |
+        - [ ] ...
+    validations:
+      required: true

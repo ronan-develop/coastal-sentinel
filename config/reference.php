@@ -851,7 +851,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         validation_error_resource_class?: scalar|Param|null, // The class used to represent validation errors in the OpenAPI documentation. // Default: null
  *     },
  *     maker?: bool|array{
- *         enabled?: bool|Param, // Default: false
+ *         enabled?: bool|Param, // Default: true
  *         namespace_prefix?: scalar|Param|null, // Add a prefix to all maker generated classes. e.g set it to "Api" to set the maker namespace to "App\Api\" (if the maker.root_namespace config is App). e.g. App\Api\State\MyStateProcessor // Default: ""
  *     },
  *     mcp?: bool|array{
@@ -1605,6 +1605,17 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         cache?: scalar|Param|null, // Storage to track blocked tokens // Default: "cache.app"
  *     },
  * }
+ * @psalm-type MakerConfig = array{
+ *     root_namespace?: scalar|Param|null, // Default: "App"
+ *     generate_final_classes?: bool|Param, // Default: true
+ *     generate_final_entities?: bool|Param, // Default: false
+ * }
+ * @psalm-type DamaDoctrineTestConfig = array{
+ *     enable_static_connection?: mixed, // Default: true
+ *     enable_static_meta_data_cache?: bool|Param, // Default: true
+ *     enable_static_query_cache?: bool|Param, // Default: true
+ *     connection_keys?: list<mixed>,
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -1615,6 +1626,18 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     doctrine_migrations?: DoctrineMigrationsConfig,
  *     security?: SecurityConfig,
  *     lexik_jwt_authentication?: LexikJwtAuthenticationConfig,
+ *     "when@dev"?: array{
+ *         imports?: ImportsConfig,
+ *         parameters?: ParametersConfig,
+ *         services?: ServicesConfig,
+ *         framework?: FrameworkConfig,
+ *         api_platform?: ApiPlatformConfig,
+ *         doctrine?: DoctrineConfig,
+ *         doctrine_migrations?: DoctrineMigrationsConfig,
+ *         security?: SecurityConfig,
+ *         lexik_jwt_authentication?: LexikJwtAuthenticationConfig,
+ *         maker?: MakerConfig,
+ *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -1636,6 +1659,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         doctrine_migrations?: DoctrineMigrationsConfig,
  *         security?: SecurityConfig,
  *         lexik_jwt_authentication?: LexikJwtAuthenticationConfig,
+ *         dama_doctrine_test?: DamaDoctrineTestConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,
@@ -1719,6 +1743,7 @@ namespace Symfony\Component\Routing\Loader\Configurator;
  *     deprecated?: array{package:string, version:string, message?:string},
  * }
  * @psalm-type RoutesConfig = array{
+ *     "when@dev"?: array<string, RouteConfig|ImportConfig|AliasConfig>,
  *     "when@prod"?: array<string, RouteConfig|ImportConfig|AliasConfig>,
  *     "when@test"?: array<string, RouteConfig|ImportConfig|AliasConfig>,
  *     ...<string, RouteConfig|ImportConfig|AliasConfig>

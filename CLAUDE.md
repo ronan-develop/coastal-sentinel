@@ -9,17 +9,26 @@ précoce (J+3 à J+7) à partir de données environnementales publiques.
 
 ## Index
 
-| Sujet                        | Fichier                                                  |
-|------------------------------|----------------------------------------------------------|
-| Architecture `src/`, UUID    | [.claude/architecture.md](.claude/architecture.md)       |
-| Commits, branches, `/git`    | [.claude/git-conventions.md](.claude/git-conventions.md) |
-| Commandes bin/console, tests | [.claude/commands.md](.claude/commands.md)               |
-| Méthodologie TDD             | [.claude/tdd.md](.claude/tdd.md)                         |
-| Modèle de risque, ingestion  | [.claude/domaine.md](.claude/domaine.md)                 |
+| Sujet                        | Fichier                                                    |
+|------------------------------|------------------------------------------------------------|
+| Tickets, planification, `gh` | [.claude/workflow-tickets.md](.claude/workflow-tickets.md) |
+| Architecture `src/`, UUID    | [.claude/architecture.md](.claude/architecture.md)         |
+| Commits, branches, `/git`    | [.claude/git-conventions.md](.claude/git-conventions.md)   |
+| Commandes bin/console, tests | [.claude/commands.md](.claude/commands.md)                 |
+| Méthodologie TDD             | [.claude/tdd.md](.claude/tdd.md)                           |
+| Modèle de risque, ingestion  | [.claude/domaine.md](.claude/domaine.md)                   |
 
 ---
 
 ## Règles critiques — toujours actives
+
+### Tickets & planification — NON NÉGOCIABLE, préalable à tout code
+
+- **Aucune ligne de code sans ticket GitHub associé** — l'issue se crée d'abord, via `gh`
+- **Aucun code sans plan de tâche validé** — présenter le plan, attendre l'accord explicite, puis coder
+- Chaque branche est liée à un ticket : `<type>/#<numéro>-<slug>`
+- Flux imposé, dans l'ordre : **ticket → plan validé → branche → TDD → commits → PR (`Closes #<n>`)**
+- Détail complet : [.claude/workflow-tickets.md](.claude/workflow-tickets.md)
 
 ### Secrets
 

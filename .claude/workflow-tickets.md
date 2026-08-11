@@ -106,14 +106,19 @@ déduite automatiquement du ticket lié sans logique supplémentaire ; c'est
 donc une étape manuelle **systématique**, jamais oubliée, exécutée juste
 après chaque `gh pr create`.
 
-## 7. Après le merge — journal non technique
+## 7. Journal non technique — proactif, filtre strict client/métier
 
-Une fois la PR mergée, évaluer si l'étape franchie apporte une plus-value
-suffisante pour un lecteur non développeur (CRC, partenaires) — typiquement :
-nouvelle brique fonctionnelle, décision structurante, jalon terrain. Si oui,
-compléter `avancements.md` (racine du repo, non commité, non tracké) avec
-une nouvelle entrée de journal datée. Ne pas y consigner du pur outillage
-interne (config CI, lint, etc.) sans intérêt pour ce public.
+Compléter `avancements.md` (racine du repo, non commité, non tracké) dès
+qu'une avancée apporte de la valeur **côté client/métier** (CRC,
+conchyliculteurs) — pas côté technique. Filtre à appliquer avant chaque
+ajout : « est-ce que ça change quelque chose pour le terrain/le client ? »
+Si non, ça ne va pas dans le journal, même si c'est un jalon technique
+important en interne (architecture, squelette applicatif, outillage
+CI/Kanban, gouvernance du dépôt).
+
+**Ne pas attendre qu'on le redemande ni qu'une PR soit mergée** : le jalon
+peut survenir en amont du code (ex. test d'accès à une source de données
+externe). Entrées sans date ni heure — seulement le contenu de l'étape.
 
 ---
 

@@ -33,12 +33,12 @@ gh issue create \
   --title "<titre explicite>" \
   --label "<feature|bug|chore>" \
   --body "<contexte + critères d'acceptation>"
-
-# rattacher au Kanban du projet
-gh project item-add 9 --owner ronan-develop --url <url-du-ticket>
 ```
 
-Kanban de suivi : [github.com/users/ronan-develop/projects/9](https://github.com/users/ronan-develop/projects/9/views/1) — tout ticket créé doit y être rattaché.
+Kanban de suivi : [github.com/users/ronan-develop/projects/9](https://github.com/users/ronan-develop/projects/9/views/1).
+Rattachement **automatique** à la création via
+[.github/workflows/add-to-project.yml](../.github/workflows/add-to-project.yml)
+— aucune commande manuelle nécessaire.
 
 | Label     | Usage                                             |
 | --------- | ------------------------------------------------- |

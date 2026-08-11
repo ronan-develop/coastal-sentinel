@@ -15,7 +15,7 @@ précoce (J+3 à J+7) à partir de données environnementales publiques.
 | Commits, branches, `/git`    | [.claude/git-conventions.md](.claude/git-conventions.md)   |
 | Architecture `src/`, UUID    | [.claude/architecture.md](.claude/architecture.md)         |
 | Commandes bin/console, tests | [.claude/commands.md](.claude/commands.md)                 |
-| Méthodologie TDD             | `.claude/tdd.md` _(à venir)_                               |
+| Méthodologie TDD             | [.claude/tdd.md](.claude/tdd.md)                           |
 | Modèle de risque, ingestion  | `.claude/domaine.md` _(à venir)_                           |
 
 ---

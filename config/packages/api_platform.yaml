@@ -1,7 +1,16 @@
 api_platform:
-    title: Hello API Platform
+    title: Coastal Sentinel API
+    description: API prédictive de risque climatique/sanitaire pour la conchyliculture.
     version: 1.0.0
     defaults:
         stateless: true
         cache_headers:
             vary: ['Content-Type', 'Authorization', 'Origin']
+    formats:
+        jsonld: ['application/ld+json']
+        json: ['application/json']
+        html: ['text/html']
+    docs_formats:
+        jsonld: ['application/ld+json']
+        jsonopenapi: ['application/vnd.openapi+json']
+        html: ['text/html']

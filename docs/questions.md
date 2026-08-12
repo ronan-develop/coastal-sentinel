@@ -19,6 +19,13 @@ l'existant, ne pas arriver avec une solution figée (cf.
 
 ## 2. Besoin réel et horizon utile
 
+- Au-delà de la température, quels risques/paramètres environnementaux
+  comptent le plus pour vous (salinité, oxygène dissous, apports d'eau
+  douce/précipitations, bactériologique, autre) ? Dans quel ordre de
+  priorité pour un prochain risque à couvrir après le thermique ?
+- Ce suivi doit-il tourner toute l'année, ou chaque risque a-t-il sa
+  propre saison (ex. thermique l'été, autre chose en hiver) ? Faut-il
+  pouvoir couper/adapter la surveillance selon la période ?
 - Un horizon d'alerte à J+3/J+7 est-il exploitable pour agir concrètement, ou
   trop court / trop long ?
 - Quelles actions concrètes un producteur engage-t-il en amont d'un épisode
@@ -48,6 +55,10 @@ l'existant, ne pas arriver avec une solution figée (cf.
   correspond mieux à votre fonctionnement ?
 - Y a-t-il une saisonnalité où ce type d'alerte serait particulièrement
   utile (période estivale) ?
+- Un verdict seul ("risque : oui/non" + action recommandée) suffit-il à
+  vous rassurer/convaincre, ou faut-il aussi montrer la donnée brute
+  sous-jacente (ex. les températures jour par jour de la fenêtre) pour
+  que l'alerte soit crédible et vérifiable par vous-mêmes ?
 
 ## 5. Validation scientifique et partenariats
 

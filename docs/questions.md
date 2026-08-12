@@ -19,6 +19,10 @@ l'existant, ne pas arriver avec une solution figée (cf.
 
 ## 2. Besoin réel et horizon utile
 
+- Au-delà de la température, quels risques/paramètres environnementaux
+  comptent le plus pour vous (salinité, oxygène dissous, apports d'eau
+  douce/précipitations, bactériologique, autre) ? Dans quel ordre de
+  priorité pour un prochain risque à couvrir après le thermique ?
 - Un horizon d'alerte à J+3/J+7 est-il exploitable pour agir concrètement, ou
   trop court / trop long ?
 - Quelles actions concrètes un producteur engage-t-il en amont d'un épisode

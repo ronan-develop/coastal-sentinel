@@ -210,6 +210,26 @@
     stroke-linejoin: round;
   }
 
+  .zone-map .cell-ok {
+    fill: var(--ok-text);
+    stroke: var(--ok-border);
+    stroke-width: 1;
+  }
+
+  .zone-map .cell-risque {
+    fill: var(--danger-text);
+    stroke: var(--danger-border);
+    stroke-width: 1;
+  }
+
+  .zone-map .cell-absent {
+    fill: none;
+    stroke: var(--muted);
+    stroke-width: 1;
+    stroke-dasharray: 1.5 1.5;
+    opacity: 0.7;
+  }
+
   dl {
     margin: 0;
     display: grid;
@@ -330,7 +350,7 @@ const COASTLINES = {
   // géographique (trait de côte réel, OpenStreetMap, simplifié) — SVG
   // auto-contenu, pas de service de carte externe, pas de dépendance
   // réseau pendant la démo (cf. ticket #29).
-  function renderZoneMap(polygons, zoneCode) {
+  function renderZoneMap(polygons, zoneCode, cells) {
     if (!polygons || polygons.length === 0) {
       return '';
     }
@@ -372,10 +392,17 @@ const COASTLINES = {
       .map((ring) => `<path class="zone-outline" d="${pathFrom(ring, true)}" />`)
       .join('');
 
-    return `<svg class="zone-map" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte de la zone">${coastPaths}${zonePaths}</svg>`;
+    // Mailles de couverture réelle (ticket #33) — vert = sous le seuil,
+    // rouge = au-dessus, gris creux = maille non résolue par le modèle
+    // (jamais confondu visuellement avec une vraie mesure "ok").
+    const cellMarkers = (cells || [])
+      .map((cell) => `<circle class="cell cell-${cell.status}" cx="${toX(cell.lon).toFixed(1)}" cy="${toY(cell.lat).toFixed(1)}" r="3.5"><title>${cell.value !== null ? cell.value.toFixed(1) + '°C' : 'Donnée absente'}</title></circle>`)
+      .join('');
+
+    return `<svg class="zone-map" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte de la zone">${coastPaths}${zonePaths}${cellMarkers}</svg>`;
   }
 
-  function renderAssessment(data) {
+  function renderAssessment(data, cells) {
     const risky = data.score > 0;
     const badgeClass = risky ? 'danger' : 'ok';
     const badgeLabel = risky ? 'Risque détecté' : 'Aucun risque';
@@ -383,7 +410,7 @@ const COASTLINES = {
     resultEl.innerHTML = `
       <div class="card">
         <span class="badge ${badgeClass}">${badgeLabel}</span>
-        ${renderZoneMap(data.zonePolygons, data.zone)}
+        ${renderZoneMap(data.zonePolygons, data.zone, cells)}
         <dl>
           <dt>Zone</dt><dd>${data.zone}</dd>
           <dt>Type de risque</dt><dd>${data.riskType}</dd>
@@ -423,7 +450,23 @@ const COASTLINES = {
       } else if (!response.ok) {
         renderError(`Erreur inattendue (code ${response.status}).`);
       } else {
-        renderAssessment(await response.json());
+        const data = await response.json();
+
+        // La couverture est un diagnostic optionnel — son indisponibilité
+        // ne doit jamais empêcher d'afficher le verdict principal.
+        let cells = [];
+        try {
+          const coverageResponse = await fetch(`/api/risque/${encodeURIComponent(zone)}/couverture`, {
+            headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
+          });
+          if (coverageResponse.ok) {
+            cells = (await coverageResponse.json()).cells;
+          }
+        } catch (error) {
+          // silencieux : la carte s'affiche quand même sans les mailles
+        }
+
+        renderAssessment(data, cells);
       }
     } catch (error) {
       renderError("Impossible de contacter le serveur.");

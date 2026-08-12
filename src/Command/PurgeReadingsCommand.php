@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\Repository\EnvironmentReadingCellRepository;
 use App\Repository\EnvironmentReadingRepository;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -20,6 +21,7 @@ final class PurgeReadingsCommand extends Command
 {
     public function __construct(
         private readonly EnvironmentReadingRepository $environmentReadingRepository,
+        private readonly EnvironmentReadingCellRepository $environmentReadingCellRepository,
     ) {
         parent::__construct();
     }
@@ -40,8 +42,17 @@ final class PurgeReadingsCommand extends Command
 
         $threshold = new \DateTimeImmutable(\sprintf('-%d days', $keepDays));
         $purgedCount = $this->environmentReadingRepository->purgeRawPayloadOlderThan($threshold);
+        // Instantanés de grille (diagnostic de couverture, ticket #33) —
+        // purge complète des lignes, même seuil : c'est une donnée
+        // entièrement diagnostique, pas de distinction brut/structuré ici.
+        $purgedCellCount = $this->environmentReadingCellRepository->purgeOlderThan($threshold);
 
-        $io->success(\sprintf('%d relevé(s) purgé(s) (rawPayload effacé, au-delà de %d jours).', $purgedCount, $keepDays));
+        $io->success(\sprintf(
+            '%d relevé(s) purgé(s) (rawPayload effacé), %d maille(s) de couverture supprimée(s), au-delà de %d jours.',
+            $purgedCount,
+            $purgedCellCount,
+            $keepDays,
+        ));
 
         return Command::SUCCESS;
     }

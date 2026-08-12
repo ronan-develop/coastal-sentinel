@@ -8,6 +8,7 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     app.copernicus.script_path: '%kernel.project_dir%/bin/ingest-copernicus.py'
+    app.copernicus.grid_script_path: '%kernel.project_dir%/bin/ingest-copernicus-grid.py'
 
 services:
     # default configuration for services in *this* file
@@ -16,12 +17,15 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
             iterable $dataSources: !tagged_iterator app.environment_data_source
+            iterable $gridSources: !tagged_iterator app.environment_grid_source
 
     # tague automatiquement chaque implémentation d'un adaptateur de données
     # environnementales pour l'IngestionOrchestrator (pattern Strategy)
     _instanceof:
         App\Interface\EnvironmentDataSourceInterface:
             tags: ['app.environment_data_source']
+        App\Interface\EnvironmentGridSourceInterface:
+            tags: ['app.environment_grid_source']
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -35,6 +39,11 @@ services:
             $pythonBinary: '%env(COPERNICUS_PYTHON_BIN)%'
             $scriptPath: '%app.copernicus.script_path%'
 
+    App\Service\Adapter\Copernicus\CopernicusGridProcessFactory:
+        arguments:
+            $pythonBinary: '%env(COPERNICUS_PYTHON_BIN)%'
+            $scriptPath: '%app.copernicus.grid_script_path%'
+
 # Adaptateurs de test — jamais chargés en dev/prod, permettent de tester le
 # câblage de IngestCommand sans dépendre de Python ni du réseau.
 when@test:
@@ -43,3 +52,5 @@ when@test:
             tags: ['app.environment_data_source']
         App\Tests\Stub\FailingTestDataSource:
             tags: ['app.environment_data_source']
+        App\Tests\Stub\TestFixtureGridSource:
+            tags: ['app.environment_grid_source']

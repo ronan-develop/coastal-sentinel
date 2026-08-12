@@ -6,6 +6,7 @@ namespace App\Tests\Command;
 
 use App\Entity\DataSource;
 use App\Entity\EnvironmentReading;
+use App\Entity\EnvironmentReadingCell;
 use App\Entity\Zone;
 use App\Enum\DataSourceType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,6 +43,10 @@ final class IngestCommandTest extends KernelTestCase
         self::assertSame(0, $exitCode);
         self::assertStringContainsString('1 mesure', $tester->getDisplay());
         self::assertCount(1, $this->em->getRepository(EnvironmentReading::class)->findBy(['zone' => $zone]));
+        // Le volet grille (diagnostic de couverture, ticket #33) tourne en
+        // complément, avec la même source si elle expose aussi
+        // EnvironmentGridSourceInterface — cf. TestFixtureGridSource.
+        self::assertCount(1, $this->em->getRepository(EnvironmentReadingCell::class)->findBy(['zone' => $zone]));
     }
 
     public function testReturnsFailureAndKeepsPreviousDataWhenSourceFails(): void

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\Service\GridIngestionOrchestrator;
 use App\Service\IngestionOrchestrator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -20,6 +21,7 @@ final class IngestCommand extends Command
 {
     public function __construct(
         private readonly IngestionOrchestrator $orchestrator,
+        private readonly GridIngestionOrchestrator $gridOrchestrator,
     ) {
         parent::__construct();
     }
@@ -56,6 +58,16 @@ final class IngestCommand extends Command
         }
 
         $io->success(\sprintf('%d mesure(s) ingérée(s) pour la zone "%s".', $count, $zoneCode));
+
+        // Instantané de couverture (diagnostic, ticket #33) — jamais
+        // bloquant : le calcul de risque ne dépend pas de cette donnée,
+        // un échec ici ne doit pas faire échouer l'ingestion principale.
+        try {
+            $cellCount = $this->gridOrchestrator->ingest($source, $zoneCode);
+            $io->note(\sprintf('%d maille(s) de couverture ingérée(s) pour la zone "%s".', $cellCount, $zoneCode));
+        } catch (\Throwable $exception) {
+            $io->warning(\sprintf('Grille de couverture non disponible pour "%s" : %s.', $source, $exception->getMessage()));
+        }
 
         return Command::SUCCESS;
     }

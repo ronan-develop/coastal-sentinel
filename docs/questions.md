@@ -23,6 +23,9 @@ l'existant, ne pas arriver avec une solution figée (cf.
   comptent le plus pour vous (salinité, oxygène dissous, apports d'eau
   douce/précipitations, bactériologique, autre) ? Dans quel ordre de
   priorité pour un prochain risque à couvrir après le thermique ?
+- Ce suivi doit-il tourner toute l'année, ou chaque risque a-t-il sa
+  propre saison (ex. thermique l'été, autre chose en hiver) ? Faut-il
+  pouvoir couper/adapter la surveillance selon la période ?
 - Un horizon d'alerte à J+3/J+7 est-il exploitable pour agir concrètement, ou
   trop court / trop long ?
 - Quelles actions concrètes un producteur engage-t-il en amont d'un épisode

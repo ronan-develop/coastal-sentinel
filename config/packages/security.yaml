@@ -35,8 +35,11 @@ security:
             # switch_user: true
 
     # Note: Only the *first* matching rule is applied
+    # Seul l'endpoint de données est protégé — la doc Swagger/Hydra reste
+    # navigable sans token (la forme de l'API n'est pas sensible, les
+    # données le sont).
     access_control:
-        - { path: ^/api, roles: ROLE_API_CLIENT }
+        - { path: ^/api/risque, roles: ROLE_API_CLIENT }
 
 when@test:
     security:

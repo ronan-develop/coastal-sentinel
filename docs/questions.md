@@ -95,3 +95,10 @@ l'existant, ne pas arriver avec une solution figée (cf.
   exondation, concession
 - Rappeler que REPAMO (Ifremer) est un réseau d'alerte _a posteriori_, pas
   prédictif — l'outil est complémentaire, pas concurrent
+- Sondes identifiées comme pistes (pas une décision arrêtée, à ne pas
+  présenter comme telle) : **nke Instrumentation** (fabricant breton,
+  Hennebont) — modèle **WiMo** (base, 4 capteurs) à privilégier plutôt que
+  WiMo Plus (surdimensionné, 20 paramètres) ; **MoSens UV** à garder en tête
+  si le bio-encrassement long terme devient un critère fort (contrôle actif
+  par UV). Devis à demander uniquement une fois le besoin validé avec le
+  CRC — cf. questions financement et équipement (§3)

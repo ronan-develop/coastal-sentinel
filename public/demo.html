@@ -6,14 +6,19 @@
 <title>Coastal Sentinel — Démo</title>
 <style>
   :root {
-    --bg-top: #eef4f3;
-    --bg-bottom: #e4edec;
+    /* Mer (haut) → sable de l'estran (bas), là où vit l'huître */
+    --bg-top: #e4f0ee;
+    --bg-bottom: #ece3d3;
+    /* Nacre : blanc légèrement irisé, reflets crème et bleu-lavande */
     --surface: #ffffff;
+    --surface-sheen: linear-gradient(135deg, #ffffff 0%, #f8f4ec 55%, #f1eef6 100%);
     --text: #16302e;
     --muted: #5c706d;
     --border: #dde6e4;
     --accent: #0f6e70;
     --accent-dark: #0b5658;
+    /* Coquille : terracotta sable, en écho à la robe de l'huître/moule */
+    --shell: #b97d55;
     --danger-bg: #fbeceb;
     --danger-text: #a13d34;
     --danger-border: #f0c3bd;
@@ -72,12 +77,12 @@
     width: 100%;
     height: 14px;
     margin-bottom: 1.75rem;
-    color: var(--accent);
-    opacity: 0.5;
+    color: var(--shell);
+    opacity: 0.6;
   }
 
   form {
-    background: var(--surface);
+    background: var(--surface-sheen);
     border-radius: 1rem;
     padding: 1.75rem;
     display: flex;
@@ -149,7 +154,7 @@
   .card {
     border-radius: 1rem;
     padding: 1.75rem;
-    background: var(--surface);
+    background: var(--surface-sheen);
     box-shadow: var(--elevation-1);
   }
 

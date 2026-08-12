@@ -48,6 +48,9 @@ l'existant, ne pas arriver avec une solution figée (cf.
   relever manuellement, capteurs connectés, aucun équipement) ? Un futur
   capteur devrait-il transmettre en temps réel ou une relève périodique
   serait-elle acceptable ?
+- Le CRC a-t-il déjà mobilisé des financements pour ce type d'équipement
+  (ex. FEAMPA, Région Bretagne) ? Un capteur/une sonde serait-il éligible
+  dans le cadre d'un projet comme celui-ci ?
 - Combien de temps d'historique faudrait-il idéalement garder pour que la
   calibration des seuils soit fiable ?
 

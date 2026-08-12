@@ -18,6 +18,9 @@ use App\State\RiskAssessmentProvider;
 )]
 final class RiskAssessmentOutput
 {
+    /**
+     * @param list<list<array{0: float, 1: float}>> $zonePolygons Anneaux du polygone de la zone, en [lon, lat].
+     */
     public function __construct(
         public readonly string $zone,
         public readonly string $riskType,
@@ -26,6 +29,7 @@ final class RiskAssessmentOutput
         public readonly string $windowEnd,
         public readonly string $recommendedAction,
         public readonly string $computedAt,
+        public readonly array $zonePolygons,
     ) {
     }
 }

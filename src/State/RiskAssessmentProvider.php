@@ -9,6 +9,7 @@ use ApiPlatform\State\ProviderInterface;
 use App\ApiResource\RiskAssessmentOutput;
 use App\Repository\RiskAssessmentRepository;
 use App\Repository\ZoneRepository;
+use App\Service\Geometry\WktPolygonParser;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 final class RiskAssessmentProvider implements ProviderInterface
@@ -41,6 +42,7 @@ final class RiskAssessmentProvider implements ProviderInterface
             windowEnd: $assessment->getWindowEnd()->format('Y-m-d'),
             recommendedAction: $assessment->getRecommendedAction(),
             computedAt: $assessment->getComputedAt()->format(\DateTimeInterface::ATOM),
+            zonePolygons: WktPolygonParser::parse($zone->getGeometry()),
         );
     }
 }

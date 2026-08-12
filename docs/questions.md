@@ -51,6 +51,18 @@ l'existant, ne pas arriver avec une solution figée (cf.
 - Le CRC a-t-il déjà mobilisé des financements pour ce type d'équipement
   (ex. FEAMPA, Région Bretagne) ? Un capteur/une sonde serait-il éligible
   dans le cadre d'un projet comme celui-ci ?
+- Ne pensez-vous pas qu'un système de surveillance documenté et une alerte
+  précoce pourraient jouer en votre faveur sur les primes de l'assurance
+  récolte conchylicole (dispositif national, cogéré avec FranceAgriMer/le
+  Fonds national de gestion des risques en agriculture), qui indemnise déjà
+  les pertes liées aux aléas climatiques ? Le raisonnement : mieux le risque
+  est documenté et anticipé, mieux la prime peut se négocier — étant entendu
+  que cela ne se discute qu'une fois l'outil en place avec un historique, pas
+  en amont.
+- Certains assureurs proposent, dans d'autres filières agricoles, des aides
+  à la prévention (subvention ou réduction de prime pour du matériel de
+  mitigation des risques) — une telle prise en charge existe-t-elle pour la
+  conchyliculture à votre connaissance, et un capteur y serait-il éligible ?
 - Combien de temps d'historique faudrait-il idéalement garder pour que la
   calibration des seuils soit fiable ?
 

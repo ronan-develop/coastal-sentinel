@@ -54,6 +54,8 @@ final class RiskAssessmentProviderTest extends KernelTestCase
         self::assertSame('2026-08-14', $output->windowStart);
         self::assertSame('2026-08-16', $output->windowEnd);
         self::assertSame('Risque thermique détecté.', $output->recommendedAction);
+        self::assertCount(1, $output->zonePolygons);
+        self::assertSame([-4.5, 48.3], $output->zonePolygons[0][0]);
     }
 
     public function testThrowsNotFoundForUnknownZone(): void

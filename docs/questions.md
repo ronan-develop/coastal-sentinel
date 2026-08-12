@@ -48,6 +48,10 @@ l'existant, ne pas arriver avec une solution figée (cf.
   correspond mieux à votre fonctionnement ?
 - Y a-t-il une saisonnalité où ce type d'alerte serait particulièrement
   utile (période estivale) ?
+- Un verdict seul ("risque : oui/non" + action recommandée) suffit-il à
+  vous rassurer/convaincre, ou faut-il aussi montrer la donnée brute
+  sous-jacente (ex. les températures jour par jour de la fenêtre) pour
+  que l'alerte soit crédible et vérifiable par vous-mêmes ?
 
 ## 5. Validation scientifique et partenariats
 

@@ -45,4 +45,17 @@ class EnvironmentReadingRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function purgeRawPayloadOlderThan(\DateTimeImmutable $threshold): int
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'UPDATE App\Entity\EnvironmentReading r
+                 SET r.rawPayload = NULL
+                 WHERE r.ingestedAt < :threshold
+                 AND r.rawPayload IS NOT NULL',
+            )
+            ->setParameter('threshold', $threshold)
+            ->execute();
+    }
 }

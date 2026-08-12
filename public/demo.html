@@ -230,6 +230,12 @@
     opacity: 0.7;
   }
 
+  .coverage-summary {
+    margin: 0 0 1.25rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
   dl {
     margin: 0;
     display: grid;
@@ -402,6 +408,20 @@ const COASTLINES = {
     return `<svg class="zone-map" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte de la zone">${coastPaths}${zonePaths}${cellMarkers}</svg>`;
   }
 
+  // Nombre absolu de mailles mesurées et taux de couverture sont deux
+  // informations distinctes (ticket #40) : la carte seule, en ne montrant
+  // qu'un nombre de points, peut donner une fausse impression de zone
+  // "mieux couverte" alors que le taux réel dit l'inverse.
+  function renderCoverageSummary(cells) {
+    if (!cells || cells.length === 0) {
+      return '';
+    }
+    const total = cells.length;
+    const measured = cells.filter((cell) => cell.status !== 'absent').length;
+    const pct = Math.round((measured / total) * 100);
+    return `<p class="coverage-summary">${measured} maille${measured > 1 ? 's' : ''} mesurée${measured > 1 ? 's' : ''} sur ${total} (${pct}% de couverture)</p>`;
+  }
+
   function renderAssessment(data, cells) {
     const risky = data.score > 0;
     const badgeClass = risky ? 'danger' : 'ok';
@@ -411,6 +431,7 @@ const COASTLINES = {
       <div class="card">
         <span class="badge ${badgeClass}">${badgeLabel}</span>
         ${renderZoneMap(data.zonePolygons, data.zone, cells)}
+        ${renderCoverageSummary(cells)}
         <dl>
           <dt>Zone</dt><dd>${data.zone}</dd>
           <dt>Type de risque</dt><dd>${data.riskType}</dd>

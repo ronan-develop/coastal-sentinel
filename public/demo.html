@@ -253,6 +253,11 @@
     resultEl.innerHTML = `<div class="error">${message}</div>`;
   }
 
+  const MOIS_FR = [
+    'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+    'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre',
+  ];
+
   function formatDateTime(isoString) {
     const d = new Date(isoString);
     const pad = (n) => String(n).padStart(2, '0');
@@ -263,6 +268,13 @@
     const minutes = pad(d.getMinutes());
     const seconds = pad(d.getSeconds());
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+  }
+
+  // Dates seules (sans heure, ex. fenêtre J+3→J+7) : en toutes lettres,
+  // plus lisible pour un public non technique qu'un format numérique.
+  function formatDateFr(dateOnlyIso) {
+    const [year, month, day] = dateOnlyIso.split('-').map(Number);
+    return `${day} ${MOIS_FR[month - 1]} ${year}`;
   }
 
   function renderAssessment(data) {
@@ -276,7 +288,7 @@
         <dl>
           <dt>Zone</dt><dd>${data.zone}</dd>
           <dt>Type de risque</dt><dd>${data.riskType}</dd>
-          <dt>Fenêtre évaluée</dt><dd>${data.windowStart} → ${data.windowEnd}</dd>
+          <dt>Fenêtre évaluée</dt><dd>${formatDateFr(data.windowStart)} → ${formatDateFr(data.windowEnd)}</dd>
           <dt>Action recommandée</dt><dd>${data.recommendedAction}</dd>
           <dt>Calculé le</dt><dd>${formatDateTime(data.computedAt)}</dd>
         </dl>

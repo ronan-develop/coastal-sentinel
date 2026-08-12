@@ -253,6 +253,18 @@
     resultEl.innerHTML = `<div class="error">${message}</div>`;
   }
 
+  function formatDateTime(isoString) {
+    const d = new Date(isoString);
+    const pad = (n) => String(n).padStart(2, '0');
+    const day = pad(d.getDate());
+    const month = pad(d.getMonth() + 1);
+    const year = pad(d.getFullYear() % 100);
+    const hours = pad(d.getHours());
+    const minutes = pad(d.getMinutes());
+    const seconds = pad(d.getSeconds());
+    return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+  }
+
   function renderAssessment(data) {
     const risky = data.score > 0;
     const badgeClass = risky ? 'danger' : 'ok';
@@ -266,7 +278,7 @@
           <dt>Type de risque</dt><dd>${data.riskType}</dd>
           <dt>Fenêtre évaluée</dt><dd>${data.windowStart} → ${data.windowEnd}</dd>
           <dt>Action recommandée</dt><dd>${data.recommendedAction}</dd>
-          <dt>Calculé le</dt><dd>${data.computedAt}</dd>
+          <dt>Calculé le</dt><dd>${formatDateTime(data.computedAt)}</dd>
         </dl>
       </div>
     `;

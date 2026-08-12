@@ -60,4 +60,38 @@ final class EnvironmentReadingRepositoryTest extends KernelTestCase
         self::assertCount(1, $results);
         self::assertSame($inRange->getId()->toRfc4122(), $results[0]->getId()->toRfc4122());
     }
+
+    public function testPurgesRawPayloadOlderThanThresholdOnly(): void
+    {
+        $zone = new Zone('zone-purge-test', 'Zone purge test', 'MULTIPOLYGON(((-4.5 48.3, -4.3 48.3, -4.3 48.4, -4.5 48.4, -4.5 48.3)))');
+        $dataSource = new DataSource('source-purge-test', DataSourceType::Forecast);
+        $this->em->persist($zone);
+        $this->em->persist($dataSource);
+
+        $old = new EnvironmentReading($zone, $dataSource, EnvironmentVariable::WaterTemperature, 21.0, 'celsius', new \DateTimeImmutable('2026-08-14'), 3, ['raw' => 'old']);
+        $recent = new EnvironmentReading($zone, $dataSource, EnvironmentVariable::WaterTemperature, 21.0, 'celsius', new \DateTimeImmutable('2026-08-15'), 4, ['raw' => 'recent']);
+        $this->em->persist($old);
+        $this->em->persist($recent);
+        $this->em->flush();
+
+        // ingestedAt est toujours "maintenant" au constructeur (invariant du
+        // domaine) : on l'antidate directement en base pour simuler une
+        // lecture ancienne, sans ajouter de setter au seul usage des tests.
+        $this->em->getConnection()->executeStatement(
+            'UPDATE environment_readings SET ingested_at = ? WHERE id = ?',
+            ['2026-01-01 00:00:00', $old->getId()->toBinary()],
+        );
+        $this->em->clear();
+
+        $threshold = new \DateTimeImmutable('2026-08-01');
+        $purgedCount = $this->repository->purgeRawPayloadOlderThan($threshold);
+
+        self::assertSame(1, $purgedCount);
+
+        $oldReloaded = $this->repository->find($old->getId());
+        $recentReloaded = $this->repository->find($recent->getId());
+
+        self::assertNull($oldReloaded->getRawPayload());
+        self::assertSame(['raw' => 'recent'], $recentReloaded->getRawPayload());
+    }
 }

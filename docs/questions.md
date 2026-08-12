@@ -90,6 +90,13 @@ l'existant, ne pas arriver avec une solution figée (cf.
   significativement entre J+3 et J+7 ? Faut-il pondérer différemment une
   alerte selon qu'elle se base sur un jour proche ou plus lointain de
   l'horizon ?
+- Copernicus IBI (~3km) et SHOM HYCOM3D (~1,8km) ne résolvent ni l'un ni
+  l'autre l'intérieur des bassins peu profonds testés (rade de Brest,
+  Arcachon) — un cran de résolution en plus n'a pas suffi. L'Ifremer
+  dispose-t-il (ou a-t-il connaissance) d'un modèle côtier dédié à
+  résolution plus fine (type MARS3D sur la rade de Brest) qui résoudrait
+  ces zones, et si oui, est-il exploitable en mode prévision (J+3/J+7),
+  pas seulement en rejeu/recherche ?
 
 ## 6. Prochaines étapes
 

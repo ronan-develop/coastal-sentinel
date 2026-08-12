@@ -198,6 +198,14 @@
     font-weight: 500;
   }
 
+  .source {
+    margin: 1.25rem 0 0;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
   .error {
     background: var(--danger-bg);
     color: var(--danger-text);
@@ -292,6 +300,7 @@
           <dt>Action recommandée</dt><dd>${data.recommendedAction}</dd>
           <dt>Calculé le</dt><dd>${formatDateTime(data.computedAt)}</dd>
         </dl>
+        <p class="source">Prévisions océaniques : Copernicus Marine Service (modèle IBI).</p>
       </div>
     `;
   }

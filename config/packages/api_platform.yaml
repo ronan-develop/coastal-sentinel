@@ -14,3 +14,8 @@ api_platform:
         jsonld: ['application/ld+json']
         jsonopenapi: ['application/vnd.openapi+json']
         html: ['text/html']
+    swagger:
+        http_auth:
+            jwt:
+                scheme: bearer
+                bearerFormat: JWT

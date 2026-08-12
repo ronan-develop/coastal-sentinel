@@ -18,3 +18,8 @@ if ! echo "$first_line" | grep -qP "^\S+ ($types)\([^)]+\): .+"; then
   echo "   Voir .claude/git-conventions.md" >&2
   exit 1
 fi
+
+if grep -qiE "co-authored-by:.*claude" "$commit_msg_file"; then
+  echo "🚫 Mention 'Co-Authored-By: Claude' interdite dans les commits (voir CLAUDE.md global)." >&2
+  exit 1
+fi

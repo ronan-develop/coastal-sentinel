@@ -44,6 +44,10 @@ l'existant, ne pas arriver avec une solution figée (cf.
   Brest reste-t-elle pertinente, ou un autre secteur serait-il préférable ?
 - Avez-vous déjà des mesures de terrain (sondes, bouées) sur vos bassins, en
   plus des données publiques ?
+- Comment sont équipés les producteurs aujourd'hui (sondes autonomes à
+  relever manuellement, capteurs connectés, aucun équipement) ? Un futur
+  capteur devrait-il transmettre en temps réel ou une relève périodique
+  serait-elle acceptable ?
 - Combien de temps d'historique faudrait-il idéalement garder pour que la
   calibration des seuils soit fiable ?
 

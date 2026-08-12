@@ -67,6 +67,10 @@ l'existant, ne pas arriver avec une solution figée (cf.
   confirmé de votre côté ?
 - Le CRC a-t-il déjà des relations formalisées avec l'Ifremer sur ce sujet
   (comité, convention) que je devrais connaître avant de les solliciter ?
+- La fiabilité des prévisions océaniques (Copernicus/modèle IBI) décroît-elle
+  significativement entre J+3 et J+7 ? Faut-il pondérer différemment une
+  alerte selon qu'elle se base sur un jour proche ou plus lointain de
+  l'horizon ?
 
 ## 6. Prochaines étapes
 
